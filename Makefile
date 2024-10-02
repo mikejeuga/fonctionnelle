@@ -1,16 +1,18 @@
 repo=$(shell basename "`pwd`")
 
-clean:
-	@ocamlbuild -clean
-
 run:
 	@ocamlbuild lec.byte
 	@./lec.byte
+	@ocamlbuild -clean
+
+clean:
+	@ocamlbuild -clean
 	
 t: test
 test:
-	@ocamlbuild -pkgs oUnit lec_test.byte
+	@ocamlbuild -pkgs ounit2 lec_test.byte
 	@./lec_test.byte
+	@ocamlbuild -clean
 
 ic: init
 init:

@@ -7,5 +7,4 @@ let tests = "tests suite for the sum" >::: [
   "onetwo" >:: (fun _ -> assert_equal 3 (sum [1; 2]));
 ]
 
-
 let _ = run_test_tt_main tests

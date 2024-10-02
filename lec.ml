@@ -52,8 +52,6 @@ let _ = "Hello, " ^
 let addx x = (fun y -> x + y)
 let add5 = addx 5
 
-let double x = 2 * x
-
 let _ = add5 86
 |> string_of_int
 |> print_endline
@@ -91,13 +89,12 @@ let double = fois_x 2
 
 let _ = double 15 |> print_int |> print_newline
 
-let double_le_resultat_de (f: int -> int) = 
-  fun x -> double (f x)
+let double_le_resultat_de (f: int -> int) = fun x -> double (f x)
 
 let double_du_next = double_le_resultat_de inc
 
-let _ = double_du_next 3 
-|> print_int 
+let _ = double_du_next 3
+|> print_int
 |> print_newline
 
 
@@ -108,11 +105,11 @@ let rec sigma formule n =
 
 
 let _ = sigma double 10
-|> print_int 
+|> print_int
 |> print_newline
 
 type longitude = float
-type lattitude = float 
+type lattitude = float
 
 type point = float * float
 type coordinates = longitude * lattitude
@@ -145,7 +142,7 @@ let _ =
 
 let head = 
   function
-  | h::t -> h
+  | h::_t -> h
   | _ -> failwith "no head"
 
 let _ = 
@@ -215,13 +212,6 @@ let _ =
   |> print_newline
 
 
-  let rec count n = 
-    match n with
-    | 0 -> ()
-    | _ ->  count(n-1);
-    print_int n; print_string " ";;
-
-
   let rec fib n =
     match n with
     | n when n < 2 -> n
@@ -237,13 +227,9 @@ let _ =
     | _ -> print_char mot.[i]; print_char ' ';
         spell_backward mot (i-1);;
 
-  let rec nth (x::xs) n =
-    match n with
-    | 0 -> x::xs
-    | x -> nth xs (n-1);;
         
-  let _ = nth [4; 2; 9; 8; 6; 7] (List.length([4; 2; 9; 8; 6; 7])-2)
-  |>print_list 
+  let _ = List.nth [4; 2; 9; 8; 6; 7] (List.length([4; 2; 9; 8; 6; 7])-2)
+  |>  print_int 
   |> print_newline;;
 
   let rec implose xs = 
@@ -271,7 +257,7 @@ let _ =
     | [] -> acc
     | x::xs -> f x (fold_right f acc xs);;
 
-  let _ = fold_right (+) 0 (nth [4; 2; 9; 8; 6; 7] (List.length([4; 2; 9; 8; 6; 7])-2)) 
+  let _ = fold_right (+) 0 [4; 2; 9; 8; 6; 7]
   |> print_int 
   |> print_newline;;
 
@@ -313,7 +299,7 @@ let _ =
     | 0 -> acc
     | _ -> fact_aux(n-1) (n * acc)
 
-  let rec fact_tr n = fact_aux n 1;;
+  let fact_tr n = fact_aux n 1;;
 
   let _ = fact_tr 50 
   |> print_int 

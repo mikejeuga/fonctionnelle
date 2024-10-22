@@ -1,3 +1,0 @@
-(executable
- (name lec_test)
- (libraries ounit2))

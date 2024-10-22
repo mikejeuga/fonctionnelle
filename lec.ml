@@ -1,4 +1,4 @@
-(** @author Mike Jeuga (26.12.2023) *)
+(* * @author Mike Jeuga (26.12.2023) *)
 
 (** Sum a list 
     @param lst The list to be summed
